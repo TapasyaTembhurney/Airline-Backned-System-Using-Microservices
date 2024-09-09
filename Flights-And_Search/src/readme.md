@@ -33,3 +33,13 @@
         }
     }
 ``` 
+
+## DB Design
+ - Airplane Table 
+ - Flight 
+ - Airport
+ - City
+
+ - A flight belong to an airplanes but one airplane can be used in multiple flights.
+ - A city has many airports but one airport belongs to a city.
+ - One airportcan have many flights, but a flight belong to one airport.  
