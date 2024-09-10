@@ -68,7 +68,7 @@ class CityRepository {
                             [Op.startsWith]: filter.name
                         }
                     }
-                })
+                });
                 return cities;
             }
             const cities = await City.findAll();
