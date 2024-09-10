@@ -1,4 +1,4 @@
-const  {CityService} = require ("../services/index");
+const {CityService} = require ("../services/index");
 
 //Global city service object
 
@@ -99,6 +99,25 @@ const update = async (req, res) => {
             data: {},
             success: false,
             message: "Not able to update the city",
+            err: error
+        });
+    }
+}
+const destroy = async (req, res) => {
+    try {
+        const response = await cityService.deleteCity(req.params.id);
+        return res.status(200).json({
+            data: response,
+            success: true,
+            message: "Successfully deleted city",
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: "Not able to delete the city",
             err: error
         });
     }

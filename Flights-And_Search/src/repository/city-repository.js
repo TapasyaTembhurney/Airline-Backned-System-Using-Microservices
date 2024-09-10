@@ -37,7 +37,7 @@ class CityRepository {
             // });
             // for getting updated data in mysql we use the below approach.
             const city = await City.findByPk(cityId);
-            City.name = data.name;
+            city.name = data.name;
             await city.save();
             return city;
         }
