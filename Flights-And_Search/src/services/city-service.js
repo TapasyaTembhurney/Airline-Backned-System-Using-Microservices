@@ -47,5 +47,16 @@ class CityService {
             throw{error};
         }
     }
+
+
+    async getAllCities() {
+        try {
+            const cities = awiat this.cityRepository.getAllCities() ;
+            return cities;
+        }catch(error) {
+            console.error("Something went wrong at service layer", error) ;
+            throw{error} ;
+        }
+    }
 }
 modules.export = CityService;
