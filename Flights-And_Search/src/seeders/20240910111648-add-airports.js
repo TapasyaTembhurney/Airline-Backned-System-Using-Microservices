@@ -58,43 +58,43 @@ module.exports = {
 
     {
       name: "Shimla Airport",
-      cityId: 6,
-      createdAt: new Date(), 
-      updatedAt: new Date() 
-    },
-    {
-      name: "Bagdogra Airport",
       cityId: 7,
       createdAt: new Date(), 
       updatedAt: new Date() 
     },
     {
-      name: "Pune International Airport",
+      name: "Bagdogra Airport",
       cityId: 8,
       createdAt: new Date(), 
       updatedAt: new Date() 
     },
     {
-      name: "Chennai International Airport",
+      name: "Pune International Airport",
       cityId: 9,
       createdAt: new Date(), 
       updatedAt: new Date() 
     },
     {
-      name: "Jaipur International Airport",
+      name: "Chennai International Airport",
       cityId: 10,
       createdAt: new Date(), 
       updatedAt: new Date() 
     },
     {
-      name: "Madurai Airport",
+      name: "Jaipur International Airport",
       cityId: 11,
       createdAt: new Date(), 
       updatedAt: new Date() 
     },
     {
+      name: "Madurai Airport",
+      cityId: 12,
+      createdAt: new Date(), 
+      updatedAt: new Date() 
+    },
+    {
       name: "Srinagar Airport",
-      cityId: 15,
+      cityId: 13,
       createdAt: new Date(), 
       updatedAt: new Date() 
     },
