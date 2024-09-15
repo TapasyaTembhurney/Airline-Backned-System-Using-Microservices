@@ -7,7 +7,7 @@ class UserRepository {
             const user = await user.create(data);
             return user;
         } catch (error) {
-            console.log("Something went wrong on repository layer" , error);
+            console.log("Something went wrong on repository layer", error);
         }
     }
 
@@ -15,29 +15,42 @@ class UserRepository {
         try {
             await User.destroy({
                 where: {
-                   id : userId
+                    id: userId
                 }
             })
             return true;
         }
         catch (error) {
-            console.log("Something went wrong on repository layer" , error);
+            console.log("Something went wrong on repository layer", error);
         }
     }
-    
+
     async getById(userId) {
         try {
-            const user = await User.findByPk(userId,{
+            const user = await User.findByPk(userId, {
                 attributes: ['email', 'id']
             })
             return user;
         } catch (error) {
             console.log("something went wrong on repository layer", error);
-            throw error;
-        } 
+            throw {error};
+        }
+    }
+
+    async getByEmail(userEmail) {
+        try {
+            const user = await User.findOne({
+                where: {
+                    email: userEmail
+                }
+            });
+            return user;
+        } catch (error) {
+            console.log("something went wrong on repository layer", error);
+            throw {error};
+        }
     }
 }
-
 // sequelize command ko run krne time src me hona jruri hai .
 
 module.exports = UserRepository;
