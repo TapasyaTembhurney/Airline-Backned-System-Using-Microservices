@@ -41,19 +41,19 @@ class UserService {
     async isAuthenticated(token) {
         try {
             const response = this.verifyToken(token);
-            if(!response) {
+            if (!response) {
                 throw { error: 'Invalid token' }
             }
-            const user =await this.userRepository.getById(response.id);
-            if(!user) {
-                throw { error: 'No user with the corresponding token exist'}
+            const user = await this.userRepository.getById(response.id);
+            if (!user) {
+                throw { error: 'No user with the corresponding token exist' }
             }
             return user.id;
         } catch (error) {
             console.log('Something went wrong in the auth process');
             throw error;
         }
-    }   
+    }
 
     createToken(user) {
         try {
@@ -80,9 +80,18 @@ class UserService {
             return bcrypt.compareSync(userInputPlainPassword, encryptedPassword)
         } catch (error) {
             console.log("Something went wrong in password comparison");
+            throw { error };
         }
     }
 
-};
+    isAdmin(userId) {
+        try {
+            return this.userRepository.isAdmin(userId);
+        } catch (error) {
+            console.log("Something went wrong in service layer");
+            throw error;
+        }
+    };
+}
 
 module.exports = UserService;

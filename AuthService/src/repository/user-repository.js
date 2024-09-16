@@ -1,4 +1,4 @@
-const { User } = require("../models/index");
+const { User, Role } = require("../models/index");
 
 class UserRepository {
 
@@ -50,6 +50,22 @@ class UserRepository {
             throw {error};
         }
     }
+
+    async isAdmin(userId) {
+        try {
+            const user = await User.findByPk(userId);
+            const adminRole = await Role.findOne({
+                where: {
+                    name: 'ADMIN'
+                }
+            });
+            return user.hasRole(adminRole);
+        } catch (error) {
+            console.log("something went wrong on repository layer", error);
+            throw error;
+        }
+    }
+    
 }
 // sequelize command ko run krne time src me hona jruri hai .
 
