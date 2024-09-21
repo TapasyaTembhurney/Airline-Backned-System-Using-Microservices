@@ -2,7 +2,9 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const UserRepository = require("../repository/user-repository");
 
-const { JWT_KEY } = require("../config/serverconfig")
+const { JWT_KEY } = require("../config/serverconfig");
+const AppErrors = require('../utils/error-handler.js');
+
 class UserService {
     constructor() {
         this.userRepository = new UserRepository();
@@ -13,8 +15,17 @@ class UserService {
             const user = await this.userRepository.create(data);
             return user;
         } catch (error) {
+            if(error.name === 'SequelizeValidationError') {
+                throw {error};
+            }
             console.log("Something went wrong in the service layer");
-            throw { error };
+
+            throw new AppErrors(
+                'ServerError',
+                'Something went wrong in service',
+                'Logical issue found',
+                500
+            );
         }
     }
 
@@ -33,6 +44,9 @@ class UserService {
             const newJWT = this.createToken({ email: user.email, id: user.id });
             return newJWT;
         } catch (error) {
+            if(error.name === 'AttributeNotFound') {
+                throw {error};
+            }
             console.log("Something went wrong in the sign in process");
             throw error;
         }
