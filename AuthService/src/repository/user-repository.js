@@ -89,6 +89,6 @@ class UserRepository {
     }
     
 }
-// sequelize command ko run krne time src me hona jruri hai .
+
 
 module.exports = UserRepository;

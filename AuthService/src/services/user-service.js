@@ -43,7 +43,7 @@ class UserService {
             // step 3: if passwords match thencreate a token and send it to the user
             const newJWT = this.createToken({ email: user.email, id: user.id });
             return newJWT;
-        } catch (error) {
+     } catch (error) {
             if(error.name === 'AttributeNotFound') {
                 throw {error};
             }
